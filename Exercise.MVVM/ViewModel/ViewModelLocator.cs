@@ -1,3 +1,5 @@
+using Autofac;
+using Exercise.MVVM.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -11,27 +13,22 @@ namespace Exercise.MVVM.ViewModel
         /// </summary>
         public ViewModelLocator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            var builder = new ContainerBuilder();
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
+            builder.RegisterType<MainViewModel>();
 
-            SimpleIoc.Default.Register<MainViewModel>();
+            builder.RegisterType<FakeStorage>().As<IStorage>();
+
+            ViewModelContainer = builder.Build();
         }
+
+        public IContainer ViewModelContainer;
 
         public MainViewModel Main
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ViewModelContainer.Resolve<MainViewModel>();
             }
         }
     }

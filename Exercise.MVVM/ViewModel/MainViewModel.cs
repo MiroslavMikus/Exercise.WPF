@@ -8,7 +8,6 @@ namespace Exercise.MVVM.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
-
         public MainViewModel(IStorage storage)
         {
             var fakeData = storage.GetUsers();
@@ -27,7 +26,7 @@ namespace Exercise.MVVM.ViewModel
         {
             Delete = new RelayCommand<User>(a => Users.Remove(a));
 
-            Create = new RelayCommand(() => Users.Add(new User { FirstName = "" });
+            Create = new RelayCommand(() => Users.Add(new User { FirstName = "" }));
         }
     }
 }
