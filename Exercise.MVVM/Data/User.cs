@@ -1,9 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-
-namespace Exercise.MVVM.Data
+﻿namespace Exercise.MVVM.Data
 {
-    public class User : ObservableObject
+    public class User : ValidObservableObject<User>
     {
+        public User():base(UserValidator.Singleton.Value){}
+
         private string _firstName;
         public string FirstName { get => _firstName; set => Set(ref _firstName, value); }
 

@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <!--Listbox which shows list of all users-->
-        <ListBox x:Name="MainListView" Grid.Column="0" ItemsSource="{Binding Users}" Grid.RowSpan="2">
+        <ListBox x:Name="MainListView" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding Users}" SelectedIndex="0">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type data:User}">
                     <Label>
@@ -78,21 +78,27 @@
             <TextBox Controls:TextBoxHelper.ClearTextButton="True"
                      Controls:TextBoxHelper.Watermark="Enter user first name"
                      Grid.Column="1" 
-                     Text="{Binding ElementName=MainListView, Path=SelectedItem.FirstName}"/>
+                     Text="{Binding ElementName=MainListView, Path=SelectedItem.FirstName,
+                                    UpdateSourceTrigger=PropertyChanged,
+                                    ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"/>
 
             <!--Users SecondName-->
             <Label Grid.Row="1" Content="Second name: "/>
             <TextBox Controls:TextBoxHelper.ClearTextButton="True"
                      Controls:TextBoxHelper.Watermark="Enter user second name"
                      Grid.Row="1" Grid.Column="1" 
-                     Text="{Binding ElementName=MainListView, Path=SelectedItem.SecondName}"/>
+                     Text="{Binding ElementName=MainListView, Path=SelectedItem.SecondName,
+                                    UpdateSourceTrigger=PropertyChanged,
+                                    ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"/>
 
             <!--Users Age-->
             <Label Grid.Row="2" Content="Age: "/>
             <TextBox Controls:TextBoxHelper.ClearTextButton="True"
                      Controls:TextBoxHelper.Watermark="Enter user age"
                      Grid.Row="2" Grid.Column="1" 
-                     Text="{Binding ElementName=MainListView, Path=SelectedItem.Age}"/>
+                     Text="{Binding ElementName=MainListView, Path=SelectedItem.Age,
+                                    UpdateSourceTrigger=PropertyChanged,
+                                    ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"/>
         </Grid>
     </Grid>
 </Controls:MetroWindow>
