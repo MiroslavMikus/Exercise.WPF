@@ -4,10 +4,84 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exercise.MVVM"
+        xmlns:data="clr-namespace:Exercise.MVVM.Data"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <Grid>
-        <Label Content="{Binding Test}"></Label>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="281*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Listbox which shows list of all users-->
+        <ListBox x:Name="MainListView" Grid.Column="0" ItemsSource="{Binding Users}" Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type data:User}">
+                    <Label>
+                        <Label.Style>
+                            <Style TargetType="{x:Type Label}">
+                                <Setter Property="Content" Value="{Binding FirstName}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FirstName}" Value="">
+                                        <Setter Property="Content" Value="[New user]"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!--buttons-->
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Margin" Value="5 10"/>
+                    <Setter Property="Padding" Value="9 5"/>
+                </Style>
+            </StackPanel.Resources>
+            <Button Content="Delete" Command="{Binding Delete}" CommandParameter="{Binding ElementName=MainListView, Path=SelectedItem}"/>
+            <Button Content="Create" Command="{Binding Create}"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="0 0 20 0"/>
+                </Style>
+            </Grid.Resources>
+            
+            <!--Users FirstName-->
+            <Label Content="First name: "/>
+            <TextBox Grid.Column="1" Text="{Binding ElementName=MainListView, Path=SelectedItem.FirstName}"/>
+
+            <!--Users SecondName-->
+            <Label Grid.Row="1" Content="Second name: "/>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=MainListView, Path=SelectedItem.SecondName}"/>
+
+            <!--Users Age-->
+            <Label Grid.Row="2" Content="Age: "/>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=MainListView, Path=SelectedItem.Age}"/>
+        </Grid>
     </Grid>
 </Window>
