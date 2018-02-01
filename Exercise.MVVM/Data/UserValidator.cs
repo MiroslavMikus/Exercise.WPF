@@ -6,14 +6,16 @@ namespace Exercise.MVVM.Data
     public class UserValidator : AbstractValidator<User>
     {
         public static Lazy<UserValidator> Singleton = new Lazy<UserValidator>(() => new UserValidator());
+
+        // Private constructor forces you to access this class trought the lazy Singleton
         private UserValidator()
         {
             RuleFor(x => x.FirstName)
-                .NotNull().WithMessage("First name is required.")
+                .NotEmpty().WithMessage("First name is required.")
                 .Length(3, 10).WithMessage($"First name have to be longer like 3 characters and shorter like 15 characters.");
 
-            RuleFor(x=>x.SecondName)
-                .NotNull().WithMessage("Second name is required.")
+            RuleFor(x => x.SecondName)
+                .NotEmpty().WithMessage("Second name is required.")
                 .Length(3, 10).WithMessage($"Second name have to be longer like 3 characters and shorter like 15 characters.");
 
             RuleFor(x => x.Age)
