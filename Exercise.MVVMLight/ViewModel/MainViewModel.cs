@@ -1,10 +1,10 @@
-using Exercise.MVVM.Data;
+using Exercise.MVVMLight.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace Exercise.MVVM.ViewModel
+namespace Exercise.MVVMLight.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {

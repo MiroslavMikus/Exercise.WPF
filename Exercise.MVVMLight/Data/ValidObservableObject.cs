@@ -7,7 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Exercise.MVVM.Data
+namespace Exercise.MVVMLight.Data
 {
     public abstract class ValidObservableObject<T> : ObservableObject, IDataErrorInfo
     {

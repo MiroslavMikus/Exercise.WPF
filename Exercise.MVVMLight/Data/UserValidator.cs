@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using System;
 
-namespace Exercise.MVVM.Data
+namespace Exercise.MVVMLight.Data
 {
     public class UserValidator : AbstractValidator<User>
     {

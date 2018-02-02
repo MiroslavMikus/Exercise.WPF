@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Exercise.MVVM.Data
+namespace Exercise.MVVMLight.Data
 {
     public class FakeStorage : IStorage
     {

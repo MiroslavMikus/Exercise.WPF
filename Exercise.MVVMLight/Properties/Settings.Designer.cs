@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Exercise.MVVM.Properties
+namespace Exercise.MVVMLight.Properties
 {
 
 

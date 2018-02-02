@@ -1,10 +1,10 @@
 using Autofac;
-using Exercise.MVVM.Data;
+using Exercise.MVVMLight.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 
-namespace Exercise.MVVM.ViewModel
+namespace Exercise.MVVMLight.ViewModel
 {
     public class ViewModelLocator
     {
