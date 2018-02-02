@@ -2,6 +2,9 @@
 
 This is my small example MVVM project.
 
+## Demo picture
+
+![Demo picture](https://github.com/MiroslavMikus/Exercise.WPF/blob/master/MVVMLight/Exercise.MVVMLight/pic/DemoPic.png)
 ## Used Frameworks
 
 - [MVVM Light](http://www.mvvmlight.net/)
