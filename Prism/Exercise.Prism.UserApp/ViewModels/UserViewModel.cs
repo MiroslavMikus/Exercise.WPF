@@ -1,10 +1,5 @@
 ﻿using Prism.Mvvm;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Exercise.Prism.User.Data;
 
 namespace Exercise.Prism.User.ViewModels
 {
@@ -17,6 +12,17 @@ namespace Exercise.Prism.User.ViewModels
             SecondName = user.SecondName;
             Age = user.Age;
             UpdatedAt = user.UpdatedAt;
+        }
+
+        public Data.User GetUser()
+        {
+            return new Data.User
+            {
+                FirstName = FirstName,
+                SecondName = SecondName,
+                Age = Age,
+                UpdatedAt = UpdatedAt
+            };
         }
 
         private int _id;

@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Exercise.Prism.User"
+        xmlns:local="clr-namespace:Exercise.Prism.User.Views"
         xmlns:prism="http://prismlibrary.com/"
-        xmlns:ViewModel="clr-namespace:Exercise.Prism.User.ViewModels"
         prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:ViewModel="clr-namespace:Exercise.Prism.User.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
@@ -36,5 +36,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
+        <local:UserDetail Grid.Column="1" Padding="10" DataContext="{Binding ElementName=MainListView, Path=SelectedItem}"/>
     </Grid>
 </Window>
