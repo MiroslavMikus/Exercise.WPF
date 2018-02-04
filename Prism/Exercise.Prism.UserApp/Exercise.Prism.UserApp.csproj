@@ -92,6 +92,7 @@
     <Compile Include="ViewModels\UserDetailViewModel.cs" />
     <Compile Include="ViewModels\Validation\UserDetailValidation.cs" />
     <Compile Include="ViewModels\Validation\ValidBindableBase.cs" />
+    <Compile Include="Views\Converters\InvertBoolean.cs" />
     <Compile Include="Views\UserDetail.xaml.cs">
       <DependentUpon>UserDetail.xaml</DependentUpon>
     </Compile>

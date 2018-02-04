@@ -22,13 +22,16 @@
             <TextBox IsEnabled="False" Text="{Binding Id}"/>
 
             <TextBlock Text="FirstName"/>
-            <TextBox  Text="{Binding FirstName}"/>
+            <TextBox  Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                      IsEnabled="{Binding EditEnabled}"/>
 
             <TextBlock Text="SecondName"/>
-            <TextBox  Text="{Binding SecondName}"/>
+            <TextBox  Text="{Binding SecondName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                      IsEnabled="{Binding EditEnabled}"/>
 
             <TextBlock Text="Age"/>
-            <TextBox Text="{Binding Age}"/>
+            <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                     IsEnabled="{Binding EditEnabled}"/>
 
             <TextBlock Text="UpdatedAt"/>
             <TextBox IsEnabled="False" Text="{Binding UpdatedAt}"/>
@@ -36,7 +39,7 @@
 
         <!--buttons-->
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button Padding="8 3 8 3" Margin="5" Content="Cancel" />
+            <Button Padding="8 3 8 3" Margin="5" Content="Cancel" Command="{Binding Cancel}" />
             <Button Padding="8 3 8 3" Margin="5" Content="Save" Command="{Binding Save}"/>
         </StackPanel>
     </DockPanel>

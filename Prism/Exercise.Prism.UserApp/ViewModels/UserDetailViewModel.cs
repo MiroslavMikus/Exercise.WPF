@@ -26,18 +26,54 @@ namespace Exercise.Prism.User.ViewModels
 
             _eventAggregator = eventAggregator;
 
+            CreateCommands();
+        }
+
+        // States
+        private bool _editEnabled = true;
+        public bool EditEnabled
+        {
+            get { return _editEnabled; }
+            set { SetProperty(ref _editEnabled, value); }
+        }
+
+        #region ICommand
+        private void CreateCommands()
+        {
             Save = new DelegateCommand(SaveCommand, () => IsValid)
-                .ObservesProperty(()=> FirstName)
-                .ObservesProperty(()=> SecondName)
-                .ObservesProperty(()=> Age);
+                .ObservesProperty(() => FirstName)
+                .ObservesProperty(() => SecondName)
+                .ObservesProperty(() => Age);
+
+            Cancel = new DelegateCommand(CancelCommand);
+        }
+
+        public DelegateCommand Cancel { get; private set; }
+        private void CancelCommand()
+        {
+            EditEnabled = false;
+            _eventAggregator.GetEvent<EditClosed>().Publish(true);
         }
 
         public DelegateCommand Save { get; private set; }
         private void SaveCommand()
         {
-            
+            UpdatedAt = DateTime.Now;
+
+            var user = new Data.User
+            {
+                UserId = Id,
+                FirstName = FirstName,
+                SecondName = SecondName,
+                Age = Age,
+                UpdatedAt = UpdatedAt
+            };
+
+            _userRepository.Update(user);
+
             _eventAggregator.GetEvent<EditClosed>().Publish(true);
         }
+        #endregion  
 
         #region Properties
         private int _id;

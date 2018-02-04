@@ -7,8 +7,14 @@
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:ViewModel="clr-namespace:Exercise.Prism.User.ViewModels"
+        xmlns:converters="clr-namespace:Exercise.Prism.User.Views.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <converters:InvertBoolean x:Key="BooleanInverter"/>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -28,7 +34,9 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <ListBox x:Name="MainListView" Grid.Row="0" ItemsSource="{Binding Users}" SelectedIndex="0" Grid.ColumnSpan="2">
+            <ListBox x:Name="MainListView" Grid.Row="0" ItemsSource="{Binding Users}" 
+                     SelectedIndex="0" Grid.ColumnSpan="2"
+                     IsEnabled="{Binding IsEditing, Converter={StaticResource BooleanInverter}}">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type ViewModel:UserViewModel}">
                         <Label>

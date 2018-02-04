@@ -40,16 +40,13 @@ namespace Exercise.Prism.User.ViewModels
             eventAggregator.GetEvent<EditClosed>().Subscribe(CloseEdit);
         }
 
-        private void CloseEdit(bool obj)
-        {
-            IsEditing = false;
-        }
 
         #region Data
         private void LoadData()
         {
             var users = _userRepository.GetAll().Select(a => new UserViewModel(a));
             Users = new ObservableCollection<UserViewModel>(users);
+            RaisePropertyChanged("Users");
         }
         public ObservableCollection<UserViewModel> Users { get; set; }
         #endregion
@@ -94,12 +91,18 @@ namespace Exercise.Prism.User.ViewModels
         }
         #endregion
 
+        #region States
         private bool _isEditing;
         public bool IsEditing
         {
             get { return _isEditing; }
             set { SetProperty(ref _isEditing, value); }
         }
-
+        private void CloseEdit(bool obj)
+        {
+            IsEditing = false;
+            LoadData();
+        }
+        #endregion
     }
 }
