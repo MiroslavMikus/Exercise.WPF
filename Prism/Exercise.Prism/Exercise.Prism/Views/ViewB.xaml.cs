@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Exercise.Prism.Views
+namespace Exercise.PrismBasic.Views
 {
     /// <summary>
     /// Interaction logic for ViewB.xaml

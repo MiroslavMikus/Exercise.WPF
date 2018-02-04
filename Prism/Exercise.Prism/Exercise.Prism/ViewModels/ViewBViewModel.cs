@@ -1,4 +1,4 @@
-﻿using Exercise.Prism.Events;
+﻿using Exercise.PrismBasic.Events;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise.Prism.ViewModels
+namespace Exercise.PrismBasic.ViewModels
 {
     public class ViewBViewModel : BindableBase
     {

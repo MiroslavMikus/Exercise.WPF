@@ -1,7 +1,7 @@
-﻿<Application x:Class="Exercise.Prism.App"
+﻿<Application x:Class="Exercise.PrismBasic.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Exercise.Prism">
+             xmlns:local="clr-namespace:Exercise.PrismBasic">
     <Application.Resources>
          
     </Application.Resources>

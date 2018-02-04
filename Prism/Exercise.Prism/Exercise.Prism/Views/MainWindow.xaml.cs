@@ -1,4 +1,4 @@
-﻿using Exercise.Prism.ViewModels;
+﻿using Exercise.PrismBasic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Exercise.Prism.Views
+namespace Exercise.PrismBasic.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

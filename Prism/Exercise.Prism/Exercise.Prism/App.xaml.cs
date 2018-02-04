@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Exercise.Prism
+namespace Exercise.PrismBasic
 {
     /// <summary>
     /// Interaction logic for App.xaml

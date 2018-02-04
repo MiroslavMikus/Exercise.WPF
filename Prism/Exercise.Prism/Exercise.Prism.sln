@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise.Prism", "Exercise.Prism\Exercise.Prism.csproj", "{639F2202-74C4-4AF7-A16A-120A6EC5BD59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise.PrismBasic", "Exercise.Prism\Exercise.PrismBasic.csproj", "{639F2202-74C4-4AF7-A16A-120A6EC5BD59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

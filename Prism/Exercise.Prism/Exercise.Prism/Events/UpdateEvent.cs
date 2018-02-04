@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exercise.Prism.Events
+namespace Exercise.PrismBasic.Events
 {
     public class UpdateEvent : PubSubEvent<string>
     {

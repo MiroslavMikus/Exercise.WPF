@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Exercise.Prism.ViewModels
+namespace Exercise.PrismBasic.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {

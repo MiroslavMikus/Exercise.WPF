@@ -1,10 +1,10 @@
-﻿using Exercise.Prism.Events;
+﻿using Exercise.PrismBasic.Events;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
 
-namespace Exercise.Prism.ViewModels
+namespace Exercise.PrismBasic.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {

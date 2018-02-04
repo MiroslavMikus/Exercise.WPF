@@ -1,9 +1,9 @@
-﻿using Exercise.Prism.Views;
+﻿using Exercise.PrismBasic.Views;
 using Prism.Unity;
 using System.Windows;
 using Microsoft.Practices.Unity;
 
-namespace Exercise.Prism
+namespace Exercise.PrismBasic
 {
     public class Bootstrapper : UnityBootstrapper
     {
