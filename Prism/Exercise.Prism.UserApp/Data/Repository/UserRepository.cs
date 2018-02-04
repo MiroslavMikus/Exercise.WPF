@@ -21,6 +21,15 @@ namespace Exercise.Prism.User.Data.Repository
             memory.Add(entity);
         }
 
+        public override void Create(User entity)
+        {
+            var lastId = memory.Max(a => a.UserId);
+
+            entity.UserId = ++lastId;
+
+            memory.Add(entity);
+        }
+
         private static List<User> FakeUserList = new List<User>
         {
             new User
