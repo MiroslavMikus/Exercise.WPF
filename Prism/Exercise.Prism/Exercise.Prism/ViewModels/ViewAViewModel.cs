@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using Exercise.Prism.Events;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using System;
 
@@ -6,8 +8,9 @@ namespace Exercise.Prism.ViewModels
 {
     public class ViewAViewModel : BindableBase
     {
-        public ViewAViewModel()
+        public ViewAViewModel(IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
 
             Update = new DelegateCommand(ExecuteUpdate, CanUpdate)
                 .ObservesProperty(() => FirstName)
@@ -23,7 +26,11 @@ namespace Exercise.Prism.ViewModels
         private void ExecuteUpdate()
         {
             UpdatedTime = DateTime.Now;
+
+            _eventAggregator.GetEvent<UpdateEvent>().Publish(UpdatedTime.ToString());
         }
+
+        private readonly IEventAggregator _eventAggregator;
 
         public DelegateCommand Update { get; private set; }
 
