@@ -26,6 +26,6 @@ namespace Exercise.Prism.User.Data.Repository
         }
 
         public abstract void Update(T entity);
-        public abstract void Create(T entity);
+        public abstract T Create(T entity);
     }
 }

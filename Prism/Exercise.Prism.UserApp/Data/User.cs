@@ -8,6 +8,10 @@ namespace Exercise.Prism.User.Data
 {
     public class User
     {
+        public User()
+        {
+            UpdatedAt = DateTime.Now;
+        }
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }

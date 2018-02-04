@@ -18,25 +18,37 @@
             <ColumnDefinition Width="160"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="MainListView" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding Users}" SelectedIndex="0">
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type ViewModel:UserViewModel}">
-                    <Label>
-                        <Label.Style>
-                            <Style TargetType="{x:Type Label}">
-                                <Setter Property="Content" Value="{Binding FirstName}"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding FirstName}" Value="">
-                                        <Setter Property="Content" Value="[New user]"/>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Label.Style>
-                    </Label>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
 
-        <local:UserDetail Grid.Column="1" Padding="10" DataContext="{Binding ElementName=MainListView, Path=SelectedItem}"/>
+        <Grid Grid.Column="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="MainListView" Grid.Row="0" ItemsSource="{Binding Users}" SelectedIndex="0" Grid.ColumnSpan="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type ViewModel:UserViewModel}">
+                        <Label>
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Content" Value="{Binding FirstName}"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding FirstName}" Value="">
+                                            <Setter Property="Content" Value="[New user]"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Margin="5" Height="30" Grid.Row="1" Content="Edit" Grid.Column="0" Command="{Binding Edit}" CommandParameter="{Binding ElementName=MainListView, Path=SelectedItem.Id}"/>
+            <Button Margin="5" Height="30" Grid.Row="1" Content="Create" Grid.Column="1" Command="{Binding Create}"/>
+        </Grid>
+        <ContentControl Grid.Column="1" Margin="10" prism:RegionManager.RegionName="ContentRegion"/>
     </Grid>
 </Window>

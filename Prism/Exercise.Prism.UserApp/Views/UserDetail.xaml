@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Exercise.Prism.User.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <!--xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True">-->
+             d:DesignHeight="300" d:DesignWidth="300"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True">
     <DockPanel>
         <DockPanel.Resources>
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="Margin" Value="0 0 0 4"/>
             </Style>
         </DockPanel.Resources>
+        
         <!--properties-->
         <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
 
@@ -30,15 +31,13 @@
             <TextBox Text="{Binding Age}"/>
 
             <TextBlock Text="UpdatedAt"/>
-            <TextBox Text="{Binding UpdatedAt}"/>
-
+            <TextBox IsEnabled="False" Text="{Binding UpdatedAt}"/>
         </StackPanel>
-
 
         <!--buttons-->
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button Padding="8 3 8 3" Margin="5" Content="Cancel"/>
-            <Button Padding="8 3 8 3" Margin="5" Content="Save"/>
+            <Button Padding="8 3 8 3" Margin="5" Content="Cancel" />
+            <Button Padding="8 3 8 3" Margin="5" Content="Save" Command="{Binding Save}"/>
         </StackPanel>
     </DockPanel>
 </UserControl>

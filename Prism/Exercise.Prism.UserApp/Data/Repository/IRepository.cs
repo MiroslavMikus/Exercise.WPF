@@ -8,7 +8,7 @@ namespace Exercise.Prism.User.Data.Repository
 {
     public interface IRepository<T>
     {
-        void Create(T entity);
+        T Create(T entity);
         IEnumerable<T> GetAll();
         void Delete(T entity);
         void Update(T entity);

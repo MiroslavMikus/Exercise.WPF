@@ -23,6 +23,8 @@ namespace Exercise.Prism.User
             base.ConfigureContainer();
 
             Container.RegisterType<IUserRepository, UserRepository>(new ContainerControlledLifetimeManager());
+
+            Container.RegisterTypeForNavigation<UserDetail>(nameof(UserDetail));
         }
     }
 }

@@ -1,5 +1,11 @@
-﻿using Exercise.Prism.User.Data.Repository;
+﻿using Exercise.Prism.User.Data;
+using Exercise.Prism.User.Data.Repository;
+using Exercise.Prism.User.Events;
+using Exercise.Prism.User.Views;
+using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,15 +18,88 @@ namespace Exercise.Prism.User.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRegionManager _regionManager;
+        private readonly IEventAggregator _eventAggregator;
 
-        public MainWindowViewModel(IUserRepository userRepository)
+        public MainWindowViewModel(IUserRepository userRepository,
+                                   IRegionManager regionManager,
+                                   IEventAggregator eventAggregator)
         {
             _userRepository = userRepository;
 
-            var users = _userRepository.GetAll().Select(a => new UserViewModel(a));
+            _eventAggregator = eventAggregator;
 
+            _regionManager = regionManager;
+
+            CreateCommands();
+
+            LoadData();
+
+            IsEditing = false;
+
+            eventAggregator.GetEvent<EditClosed>().Subscribe(CloseEdit);
+        }
+
+        private void CloseEdit(bool obj)
+        {
+            IsEditing = false;
+        }
+
+        #region Data
+        private void LoadData()
+        {
+            var users = _userRepository.GetAll().Select(a => new UserViewModel(a));
             Users = new ObservableCollection<UserViewModel>(users);
         }
         public ObservableCollection<UserViewModel> Users { get; set; }
+        #endregion
+
+        #region ICommand
+        private void CreateCommands()
+        {
+            Create = new DelegateCommand(CreateUser, CanEdit)
+                            .ObservesProperty(() => IsEditing);
+
+            Edit = new DelegateCommand<int?>(EditUser, a => CanEdit())
+                .ObservesProperty(() => IsEditing);
+        }
+
+        private bool CanEdit()
+        {
+            return !IsEditing;
+        }
+
+        public DelegateCommand<int?> Edit { get; private set; }
+        private void EditUser(int? userId)
+        {
+            var parameters = new NavigationParameters();
+
+            parameters.Add("id", userId);
+            // swap view
+            _regionManager.RequestNavigate("ContentRegion", nameof(UserDetail), parameters);
+
+            IsEditing = true;
+        }
+
+        public DelegateCommand Create { get; private set; }
+        private void CreateUser()
+        {
+            var newUser = new Data.User { FirstName = "" };
+
+            newUser = _userRepository.Create(newUser);
+
+            Users.Add(new UserViewModel(newUser));
+
+            EditUser(newUser.UserId);
+        }
+        #endregion
+
+        private bool _isEditing;
+        public bool IsEditing
+        {
+            get { return _isEditing; }
+            set { SetProperty(ref _isEditing, value); }
+        }
+
     }
 }
