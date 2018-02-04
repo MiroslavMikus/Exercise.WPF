@@ -1,4 +1,4 @@
-﻿using Exercise.Prism.ViewModel;
+﻿using Exercise.Prism.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Exercise.Prism.View
+namespace Exercise.Prism.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -24,7 +24,6 @@ namespace Exercise.Prism.View
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
         }
     }
 }
