@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise.PrismBasic", "Exercise.Prism\Exercise.PrismBasic.csproj", "{639F2202-74C4-4AF7-A16A-120A6EC5BD59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise.Prism.User", "Exercise.Prism.User\Exercise.Prism.User.csproj", "{64CF207F-3985-4855-8C30-6197BDFF1B89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise.Prism.UserApp", "Exercise.Prism.UserApp\Exercise.Prism.UserApp.csproj", "{64CF207F-3985-4855-8C30-6197BDFF1B89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
