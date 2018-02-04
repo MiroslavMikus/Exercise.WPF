@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,48 +14,21 @@ namespace Exercise.Prism.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        public MainWindowViewModel()
-        {
+        private readonly IRegionManager _regionManager;
 
-            Update = new DelegateCommand(ExecuteUpdate, CanUpdate)
-                .ObservesProperty(() => FirstName)
-                .ObservesProperty(() => SecondName);
+        public MainWindowViewModel(IRegionManager regionManager)
+        {
+            _regionManager = regionManager;
+
+            NavigateCommand = new DelegateCommand<string>(Navigate);
         }
 
-        private bool CanUpdate()
+        private void Navigate(string uri)
         {
-            return !String.IsNullOrEmpty(SecondName) &&
-                   !String.IsNullOrEmpty(FirstName);
+            _regionManager.RequestNavigate("ContentRegion", uri);
         }
 
-        private void ExecuteUpdate()
-        {
-            UpdatedTime = DateTime.Now;
-        }
-
-        public DelegateCommand Update { get; private set; }
-
-        private string _firstName = "John";
-        public string FirstName
-        {
-            get { return _firstName; }
-            set { SetProperty(ref _firstName, value); }
-        }
-
-        private string _secondName;
-        public string SecondName
-        {
-            get { return _secondName; }
-            set { SetProperty(ref _secondName, value); }
-        }
-
-        private DateTime _dateTime;
-
-        public DateTime UpdatedTime
-        {
-            get { return _dateTime; }
-            set { SetProperty(ref _dateTime, value); }
-        }
+        public DelegateCommand<string> NavigateCommand { get; private set; }
 
     }
 }

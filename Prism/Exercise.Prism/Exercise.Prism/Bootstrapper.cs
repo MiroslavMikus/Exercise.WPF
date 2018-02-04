@@ -16,5 +16,13 @@ namespace Exercise.Prism
         {
             Application.Current.MainWindow.Show();
         }
+
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+
+            Container.RegisterTypeForNavigation<ViewA>("ViewA");
+            Container.RegisterTypeForNavigation<ViewB>("ViewB");
+        }
     }
 }
