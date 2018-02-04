@@ -32,6 +32,11 @@ namespace Exercise.Prism.User.Data.Repository
             return entity;
         }
 
+        public override IEnumerable<User> GetAll()
+        {
+            return base.GetAll().OrderBy(a => a.UserId);
+        }
+
         private static List<User> FakeUserList = new List<User>
         {
             new User

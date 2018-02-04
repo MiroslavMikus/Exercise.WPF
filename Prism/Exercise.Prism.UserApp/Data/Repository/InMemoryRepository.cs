@@ -20,7 +20,7 @@ namespace Exercise.Prism.User.Data.Repository
             memory.Remove(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return memory;
         }
