@@ -4,9 +4,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exercise.Prism.User"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:ViewModel="clr-namespace:Exercise.Prism.User.ViewModels"
+        prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="MainListView" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding Users}" SelectedIndex="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type ViewModel:UserViewModel}">
+                    <Label>
+                        <Label.Style>
+                            <Style TargetType="{x:Type Label}">
+                                <Setter Property="Content" Value="{Binding FirstName}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding FirstName}" Value="">
+                                        <Setter Property="Content" Value="[New user]"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                    </Label>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

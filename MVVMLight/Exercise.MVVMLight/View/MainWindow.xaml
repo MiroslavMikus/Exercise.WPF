@@ -11,7 +11,7 @@
         DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="281*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>

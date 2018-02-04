@@ -2,6 +2,7 @@
 using System.Windows;
 using Microsoft.Practices.Unity;
 using Exercise.Prism.User.Views;
+using Exercise.Prism.User.Data.Repository;
 
 namespace Exercise.Prism.User
 {
@@ -20,6 +21,8 @@ namespace Exercise.Prism.User
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
+
+            Container.RegisterType<IUserRepository, UserRepository>(new ContainerControlledLifetimeManager());
         }
     }
 }
