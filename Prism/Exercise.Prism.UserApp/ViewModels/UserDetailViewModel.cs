@@ -27,8 +27,6 @@ namespace Exercise.Prism.User.ViewModels
             _eventAggregator = eventAggregator;
 
             CreateCommands();
-
-            EditEnabled = true;
         }
 
         // States
@@ -108,6 +106,8 @@ namespace Exercise.Prism.User.ViewModels
             SecondName = user.SecondName;
             Age = user.Age;
             UpdatedAt = user.UpdatedAt;
+
+            EditEnabled = true;
         }
 
         public bool IsNavigationTarget(NavigationContext navigationContext)

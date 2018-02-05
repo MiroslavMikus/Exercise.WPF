@@ -50,7 +50,8 @@
             <TextBox materialDesign:HintAssist.Hint="Age"
                      Text="{Binding Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
                      IsEnabled="{Binding EditEnabled}"/>
-            <DockPanel LastChildFill="True">
+            
+            <DockPanel LastChildFill="True" Margin="10">
                 <TextBlock Text="Updated at: " VerticalAlignment="Center"/>
                 <TextBox Margin="5 0 0 0" IsEnabled="False" Text="{Binding UpdatedAt}"/>
             </DockPanel>
