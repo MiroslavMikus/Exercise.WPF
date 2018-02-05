@@ -4,7 +4,8 @@ This is my small example MVVM project with prism 6.3 library.
 
 ## Demo picture
 
-![Demo picture]()
+![Demo picture](https://github.com/MiroslavMikus/Exercise.WPF/blob/master/Prism/Exercise.Prism.UserApp/pic/Prism_with_Metro.png)
+![Demo picture](https://github.com/MiroslavMikus/Exercise.WPF/blob/master/Prism/Exercise.Prism.UserApp/pic/Prism_with_Metro_01.png)
 ## Used Frameworks
 
 - [Prism](https://github.com/PrismLibrary)
