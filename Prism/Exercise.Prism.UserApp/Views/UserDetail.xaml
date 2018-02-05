@@ -1,4 +1,12 @@
 ﻿<UserControl x:Class="Exercise.Prism.User.Views.UserDetail"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,27 +22,38 @@
                 <Setter Property="Margin" Value="0 0 0 4"/>
             </Style>
         </DockPanel.Resources>
-        
+
         <!--properties-->
         <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignTextBox}">
+                    <Setter Property="Margin" Value="10"/>
+                </Style>
+            </StackPanel.Resources>
 
-            <TextBlock Text="Id"/>
-            <TextBox IsEnabled="False" Text="{Binding Id}"/>
+            <DockPanel Margin="10" LastChildFill="True">
+                <TextBlock Text="Id:" VerticalAlignment="Center"/>
+                <TextBox Margin="5 0 0 0" IsEnabled="False" Text="{Binding Id}"/>
+            </DockPanel>
 
-            <TextBlock Text="FirstName"/>
-            <TextBox  Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
-                      IsEnabled="{Binding EditEnabled}"/>
-
-            <TextBlock Text="SecondName"/>
-            <TextBox  Text="{Binding SecondName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
-                      IsEnabled="{Binding EditEnabled}"/>
-
-            <TextBlock Text="Age"/>
-            <TextBox Text="{Binding Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+            <!--<TextBlock Text="FirstName"/>-->
+            <TextBox materialDesign:HintAssist.Hint="First Name"
+                     Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
                      IsEnabled="{Binding EditEnabled}"/>
 
-            <TextBlock Text="UpdatedAt"/>
-            <TextBox IsEnabled="False" Text="{Binding UpdatedAt}"/>
+            <!--<TextBlock Text="SecondName"/>-->
+            <TextBox materialDesign:HintAssist.Hint="Second Name"
+                     Text="{Binding SecondName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                     IsEnabled="{Binding EditEnabled}"/>
+
+            <!--<TextBlock Text="Age"/>-->
+            <TextBox materialDesign:HintAssist.Hint="Age"
+                     Text="{Binding Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                     IsEnabled="{Binding EditEnabled}"/>
+            <DockPanel LastChildFill="True">
+                <TextBlock Text="Updated at: " VerticalAlignment="Center"/>
+                <TextBox Margin="5 0 0 0" IsEnabled="False" Text="{Binding UpdatedAt}"/>
+            </DockPanel>
         </StackPanel>
 
         <!--buttons-->

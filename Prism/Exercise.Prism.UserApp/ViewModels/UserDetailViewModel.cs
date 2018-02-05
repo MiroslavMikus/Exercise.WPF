@@ -27,10 +27,12 @@ namespace Exercise.Prism.User.ViewModels
             _eventAggregator = eventAggregator;
 
             CreateCommands();
+
+            EditEnabled = true;
         }
 
         // States
-        private bool _editEnabled = true;
+        private bool _editEnabled;
         public bool EditEnabled
         {
             get { return _editEnabled; }
