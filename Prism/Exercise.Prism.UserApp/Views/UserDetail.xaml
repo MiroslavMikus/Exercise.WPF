@@ -39,8 +39,8 @@
 
         <!--buttons-->
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Orientation="Horizontal">
-            <Button Padding="8 3 8 3" Margin="5" Content="Cancel" Command="{Binding Cancel}" />
-            <Button Padding="8 3 8 3" Margin="5" Content="Save" Command="{Binding Save}"/>
+            <Button Padding="8 3 8 3" Margin="5" Height="25" Content="Cancel" Command="{Binding Cancel}" />
+            <Button Padding="8 3 8 3" Margin="5" Height="25" Content="Save" Command="{Binding Save}"/>
         </StackPanel>
     </DockPanel>
 </UserControl>

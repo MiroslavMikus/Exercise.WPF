@@ -23,9 +23,16 @@ namespace Exercise.Prism.User.Data.Repository
 
         public override User Create(User entity)
         {
-            var lastId = memory.Max(a => a.UserId);
+            if (memory.Any())
+            {
+                var lastId = memory.Max(a => a.UserId);
 
-            entity.UserId = ++lastId;
+                entity.UserId = ++lastId;
+            }
+            else
+            {
+                entity.UserId = 1;
+            }
 
             memory.Add(entity);
 

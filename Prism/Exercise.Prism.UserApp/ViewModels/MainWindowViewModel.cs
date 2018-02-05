@@ -59,7 +59,11 @@ namespace Exercise.Prism.User.ViewModels
 
             Edit = new DelegateCommand<int?>(EditUser, a => CanEdit())
                 .ObservesProperty(() => IsEditing);
+
+            Delete = new DelegateCommand<int?>(DeleteUser, a => CanEdit())
+                .ObservesProperty(() => IsEditing);
         }
+
 
         private bool CanEdit()
         {
@@ -89,6 +93,17 @@ namespace Exercise.Prism.User.ViewModels
 
             EditUser(newUser.UserId);
         }
+
+        public DelegateCommand<int?> Delete { get; private set; }
+        private void DeleteUser(int? Id)
+        {
+            var user = _userRepository.GetAll().Where(a => a.UserId == Id).First();
+
+            _userRepository.Delete(user);
+
+            LoadData();
+        }
+
         #endregion
 
         #region States
