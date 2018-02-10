@@ -45,9 +45,12 @@ namespace Exercise.Prism.User.ViewModels
         private void LoadData()
         {
             var users = _userRepository.GetAll().Select(a => new UserViewModel(a));
+
             Users = new ObservableCollection<UserViewModel>(users);
-            RaisePropertyChanged("Users");
+
+            RaisePropertyChanged(nameof(Users));
         }
+
         public ObservableCollection<UserViewModel> Users { get; set; }
         #endregion
 
@@ -77,7 +80,7 @@ namespace Exercise.Prism.User.ViewModels
 
             parameters.Add("id", userId);
             // swap view
-            _regionManager.RequestNavigate("ContentRegion", nameof(UserDetail), parameters);
+            _regionManager.RequestNavigate(RegionNames.DetailRegion , nameof(UserDetail), parameters);
 
             IsEditing = true;
         }

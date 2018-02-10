@@ -1,5 +1,5 @@
 ﻿<Window x:Class="Exercise.Prism.User.Views.MainWindow"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow" Height="350" Width="700"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
@@ -7,6 +7,8 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
+       
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,8 +18,8 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:ViewModel="clr-namespace:Exercise.Prism.User.ViewModels"
         xmlns:converters="clr-namespace:Exercise.Prism.User.Views.Converters"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="700">
+        xmlns:root="clr-namespace:Exercise.Prism.User"
+        mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary>
             <converters:InvertBoolean x:Key="BooleanInverter"/>
@@ -76,6 +78,7 @@
             </Grid>
         </Grid>
         <GridSplitter Width="3" ResizeBehavior="PreviousAndNext" Grid.Column="1"/>
-        <ContentControl Grid.Column="2" Margin="5" prism:RegionManager.RegionName="ContentRegion"/>
+        <ContentControl Grid.Column="2" Margin="5" 
+                        prism:RegionManager.RegionName="{x:Static root:RegionNames.DetailRegion}"/>
     </Grid>
 </Window>

@@ -89,6 +89,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Events\EditClosed.cs" />
+    <Compile Include="RegionNames.cs" />
     <Compile Include="ViewModels\UserDetailViewModel.cs" />
     <Compile Include="ViewModels\Validation\UserDetailValidation.cs" />
     <Compile Include="ViewModels\Validation\ValidBindableBase.cs" />
