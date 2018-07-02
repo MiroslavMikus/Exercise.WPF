@@ -13,7 +13,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Exercise.Prism.User.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="500" d:DesignWidth="300"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <DockPanel>
@@ -21,6 +21,7 @@
             <Style TargetType="{x:Type TextBox}">
                 <Setter Property="Margin" Value="0 0 0 4"/>
             </Style>
+
         </DockPanel.Resources>
 
         <!--properties-->
@@ -38,23 +39,49 @@
 
             <!--<TextBlock Text="FirstName"/>-->
             <TextBox materialDesign:HintAssist.Hint="First Name"
-                     Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                     Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                      IsEnabled="{Binding EditEnabled}"/>
 
             <!--<TextBlock Text="SecondName"/>-->
             <TextBox materialDesign:HintAssist.Hint="Second Name"
-                     Text="{Binding SecondName, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                     Text="{Binding SecondName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                      IsEnabled="{Binding EditEnabled}"/>
 
             <!--<TextBlock Text="Age"/>-->
             <TextBox materialDesign:HintAssist.Hint="Age"
-                     Text="{Binding Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True, ValidatesOnDataErrors=True}"
+                     Text="{Binding Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                      IsEnabled="{Binding EditEnabled}"/>
-            
+
+            <Button Content="AddCar" Height="30" Width="100" Command="{Binding AddButton}"/>
+
             <DockPanel LastChildFill="True" Margin="10">
                 <TextBlock Text="Updated at: " VerticalAlignment="Center"/>
                 <TextBox Margin="5 0 0 0" IsEnabled="False" Text="{Binding UpdatedAt}"/>
             </DockPanel>
+
+            <DataGrid  ItemsSource="{Binding CarsViewModels}"  AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="CarId" Binding="{Binding CarId, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <DataGridTextColumn Header="Color" Binding="{Binding Color, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </DataGrid.Columns>
+                <DataGrid.RowValidationErrorTemplate>
+                    <ControlTemplate>
+                        <Grid Margin="0,-2,0,-2"
+                              ToolTip="{Binding RelativeSource={RelativeSource
+                              FindAncestor, AncestorType={x:Type DataGridRow}},
+                              Path=(Validation.Errors)[0].ErrorContent}">
+                            <Ellipse StrokeThickness="0" Fill="Red" 
+                                        Width="{TemplateBinding FontSize}" 
+                                        Height="{TemplateBinding FontSize}" />
+                            <TextBlock Text="!" FontSize="{TemplateBinding FontSize}" 
+                                    FontWeight="Bold" Foreground="White" 
+                                    HorizontalAlignment="Center"  />
+                        </Grid>
+                    </ControlTemplate>
+                </DataGrid.RowValidationErrorTemplate>
+            </DataGrid>
+
+
         </StackPanel>
 
         <!--buttons-->

@@ -52,6 +52,14 @@ namespace Exercise.Prism.User.Data.Repository
                 FirstName = "Miroslav",
                 SecondName = "Mikus",
                 Age = 20,
+                Cars = new List<Car>
+                {
+                    new Car()
+                    {
+                        Color = "red",
+                        BuyDate = DateTime.MinValue.AddYears(10)
+                    }
+                }
             },
             new User
             {

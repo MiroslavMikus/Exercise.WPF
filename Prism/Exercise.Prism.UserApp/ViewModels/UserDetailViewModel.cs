@@ -7,6 +7,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,11 @@ namespace Exercise.Prism.User.ViewModels
         #region ICommand
         private void CreateCommands()
         {
+            AddButton = new DelegateCommand(() =>
+            {
+                CarsViewModels.Add(new CarViewModel(new Data.Car ()));
+            });
+
             Save = new DelegateCommand(SaveCommand, () => IsValid)
                 .ObservesProperty(() => FirstName)
                 .ObservesProperty(() => SecondName)
@@ -47,6 +53,7 @@ namespace Exercise.Prism.User.ViewModels
 
             Cancel = new DelegateCommand(CancelCommand);
         }
+        public DelegateCommand AddButton { get; private set; }
 
         public DelegateCommand Cancel { get; private set; }
         private void CancelCommand()
@@ -92,6 +99,8 @@ namespace Exercise.Prism.User.ViewModels
         private readonly IUserRepository _userRepository;
 
         public DateTime UpdatedAt { get => _updatedAt; set => SetProperty(ref _updatedAt, value); }
+
+        public ObservableCollection<CarViewModel> CarsViewModels { get; set; }
         #endregion
 
         #region INavigationAware
@@ -106,6 +115,10 @@ namespace Exercise.Prism.User.ViewModels
             SecondName = user.SecondName;
             Age = user.Age;
             UpdatedAt = user.UpdatedAt;
+
+            CarsViewModels = new ObservableCollection<CarViewModel>(user.Cars.Select(a => new CarViewModel(a)));
+
+            RaisePropertyChanged(nameof(CarsViewModels));
 
             EditEnabled = true;
         }

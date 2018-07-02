@@ -11,11 +11,13 @@ namespace Exercise.Prism.User.Data
         public User()
         {
             UpdatedAt = DateTime.Now;
+            Cars = new List<Car>();
         }
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
         public int Age { get; set; }
+        public ICollection<Car> Cars { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
 }

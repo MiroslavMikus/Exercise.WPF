@@ -13,6 +13,11 @@ namespace Exercise.Prism.User.Data.Repository
             memory = data;
         }
 
+        public InMemoryRepository()
+        {
+            memory = new List<T>();
+        }
+
         protected List<T> memory;
 
         public void Delete(T entity)
