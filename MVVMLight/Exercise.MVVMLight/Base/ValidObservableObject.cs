@@ -6,9 +6,13 @@ using System.Linq;
 
 namespace Exercise.MVVMLight.Data
 {
+    /// <summary>
+    /// Updating property will change state from unchanged to updated
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class ValidObservableObject<T> : ObservableObject, IDataErrorInfo
     {
-        public ValidObservableObject(IValidator<T> validator, ViewModelState initState)
+        public ValidObservableObject(IValidator<T> validator, ViewModelState initState = ViewModelState.Original)
         {
             _validator = validator;
 
@@ -16,14 +20,14 @@ namespace Exercise.MVVMLight.Data
 
             PropertyChanged += (s, e) =>
             {
-                State |= ViewModelState.Updated;
+                AddState(ViewModelState.Updated);
             };
         }
 
         private ViewModelState _state;
         public ViewModelState State { get => _state; set => Set(ref _state, value); }
-        private void AddIsValdState() => State = State | ViewModelState.Valid;
-        private void RemoveIsValdState() => State &= ~ViewModelState.Valid;
+        protected void AddState(ViewModelState state) => State = State | state;
+        protected void RemoveState(ViewModelState state) => State &= ~state;
 
         #region IDataErrorInfo
         private IValidator<T> _validator;
@@ -52,9 +56,9 @@ namespace Exercise.MVVMLight.Data
             set
             {
                 if (value)
-                    AddIsValdState();
+                    AddState(ViewModelState.Valid);
                 else
-                    RemoveIsValdState();
+                    RemoveState(ViewModelState.Valid);
             }
         }
 
