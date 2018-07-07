@@ -1,13 +1,15 @@
-﻿using FluentValidation;
+﻿using Exercise.MVVMLight.User;
+using FluentValidation;
 using System;
 
 namespace Exercise.MVVMLight.Data
 {
-    public class UserValidator : AbstractValidator<User>
+    public class UserValidator : AbstractValidator<UserViewModel>
     {
         public static Lazy<UserValidator> Singleton = new Lazy<UserValidator>(() => new UserValidator());
 
         // Private constructor forces you to access this class trought the lazy Singleton
+        // this is just easy hack, in production please use some dependency injection container
         private UserValidator()
         {
             RuleFor(x => x.FirstName)

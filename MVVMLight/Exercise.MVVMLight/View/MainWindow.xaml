@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Exercise.MVVMLight"
-        xmlns:data="clr-namespace:Exercise.MVVMLight.Data"
+        xmlns:data="clr-namespace:Exercise.MVVMLight.User"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525"
@@ -22,7 +22,7 @@
         <!--Listbox which shows list of all users-->
         <ListBox x:Name="MainListView" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding Users}" SelectedIndex="0">
             <ListBox.ItemTemplate>
-                <DataTemplate DataType="{x:Type data:User}">
+                <DataTemplate DataType="{x:Type data:UserViewModel}">
                     <Label>
                         <Label.Style>
                             <Style TargetType="{x:Type Label}">

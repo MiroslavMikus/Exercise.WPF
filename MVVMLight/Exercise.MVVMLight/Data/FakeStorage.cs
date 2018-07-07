@@ -1,26 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using Exercise.MVVMLight.User;
+using System.Collections.Generic;
 
 namespace Exercise.MVVMLight.Data
 {
     public class FakeStorage : IStorage
     {
-        public IEnumerable<User> GetUsers()
+        public IEnumerable<UserViewModel> GetUsers()
         {
-            return new List<User>()
+            return new List<UserViewModel>()
             {
-                new User
+                new UserViewModel
                 {
                     FirstName  = "Miroslav",
                     SecondName = "Mikus",
                     Age = 25
                 },
-                new User
+                new UserViewModel
                 {
                     FirstName = "Nertil",
                     SecondName = "Porci",
                     Age = 24
                 },
-                new User
+                new UserViewModel
                 {
                     FirstName = "Mohamad",
                     SecondName = "Sawas",

@@ -1,4 +1,5 @@
 using Exercise.MVVMLight.Data;
+using Exercise.MVVMLight.User;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
@@ -14,19 +15,19 @@ namespace Exercise.MVVMLight.ViewModel
 
             AssignCommands();
 
-            Users = new ObservableCollection<User>(fakeData);
+            Users = new ObservableCollection<UserViewModel>(fakeData);
         }
 
-        public ObservableCollection<User> Users { get; set; }
+        public ObservableCollection<UserViewModel> Users { get; set; }
 
         public ICommand Delete { get;  private set; }
         public ICommand Create { get;  private set; }
 
         private void AssignCommands()
         {
-            Delete = new RelayCommand<User>(a => Users.Remove(a));
+            Delete = new RelayCommand<UserViewModel>(a => Users.Remove(a));
 
-            Create = new RelayCommand(() => Users.Add(new User { FirstName = "" }));
+            Create = new RelayCommand(() => Users.Add(new UserViewModel { FirstName = "" }));
         }
     }
 }
