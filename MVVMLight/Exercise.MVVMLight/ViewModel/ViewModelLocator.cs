@@ -2,7 +2,6 @@ using Autofac;
 using Exercise.MVVMLight.Data;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
 
 namespace Exercise.MVVMLight.ViewModel
 {
